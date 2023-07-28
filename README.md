@@ -13,7 +13,13 @@ To install medusa, follow [the installation instructions](https://github.com/cry
 
 ## The contest
 
-The goals of the contest is to write invariants for three targets. All the contracts are coming from [solmate](https://github.com/transmissions11/solmate).
+The goals of the contest is to write invariants for three targets (`SignedWadMath`, `FixedPointMathLib`, `ERC20Burn`). All the contracts are inspired from [solmate](https://github.com/transmissions11/solmate).
+
+
+### Helper
+- [`helper`](./contracts/helper.sol) comes from the [properties](https://github.com/crytic/properties) repo, and contains functions helper to ease the creation of invariants. In particular we recommend to use:
+  - `asssertX` (`Eq`, `Neq`, `Gte`, `Gt`, `Lte`, `Lt`) to test assertion between values
+  - `clampX` ( `Between`, `Lt`, `Lte`, `Gt`, `Gte` ) to restraint the inputs' values 
 
 ### SignedWadMath
 - [`SignedWadMath`](./contracts/SignedWadMath.sol) is a signed 18 decimal fixed point (wad) arithmetic library.
@@ -23,15 +29,13 @@ The goals of the contest is to write invariants for three targets. All the contr
 - [`FixedPointMathLib`](./contracts/FixedPointMathLib.sol) is an arithmetic library with operations for fixed-point numbers.
 - [`FixedPointMathLibTest`](./contracts/FixedPointMathLibTest.sol) is an example of test for `SignedWadMath` 
 
-### ERC20
+### ERC20Burn
 - [`ERC20`](./contracts/ERC20.sol) is an arithmetic library with operations for fixed-point numbers.
 - [`ERC20Burn`](./contracts/ERC20Burn.sol) extends `ERC20`  with a burn function
 - [`ERC20Test`](./contracts/ERC20Test.sol) is an example of test for `ERC20Burn` 
 - [`ERC20TestAdvanced`](./contracts/ERC20TestAdvanced.sol) is an example of an advanced test for `ERC20Burn` 
    - `ERC20TestAdvanced` uses the [external testing approach](https://secure-contracts.com/program-analysis/echidna/basic/common-testing-approaches.html#external-testing) and uses a proxy contract to simulate a user. This approach is more complex to use, but allows to test for more complex scenario
 
-### Helper
-- [`helper`](./contracts/helper.sol) comes from the [properties](https://github.com/crytic/properties) repo, and contains functions helper to ease the creation of invariants. 
 
 ## How to start
 

@@ -17,7 +17,7 @@ The goals of the contest is to write invariants for three targets (`SignedWadMat
 
 
 ### Helper
-- [`helper`](./contracts/helper.sol) comes from the [properties](https://github.com/crytic/properties) repo, and contains functions helper to ease the creation of invariants. In particular we recommend to use:
+- [`helper`](./contracts/helper.sol) comes from the [properties](https://github.com/crytic/properties) repo, and contains helpers to ease the creation of invariants. In particular we recommend to use:
   - `asssertX` (`Eq`, `Neq`, `Gte`, `Gt`, `Lte`, `Lt`) to test assertion between values
   - `clampX` ( `Between`, `Lt`, `Lte`, `Gt`, `Gte` ) to restraint the inputs' values 
 

@@ -22,6 +22,10 @@ contract User{
         token.transfer(to, amount);
     }
 
+    function burn(uint amount) public{
+        token.burn(amount);
+    }
+
     // More wrapper functions can be added
 }
 
@@ -50,12 +54,12 @@ contract ExternalTestingToken is PropertiesAsserts{
     // The following test a transfer from
     // Medusa will transfer an arbitrary amount using transferFrom
     // The invariant ensure that the balance was updated by the amount transfered
-    function testTransferFrom(uint amount) public{
+    function testTransferFrom(uint amount) public {
         
         // Ensure amount is less or equal to alice's balanc
         amount = clampLte(amount, token.balanceOf(address(alice)));
         // Ensure amount is less or equal to alice's approval to this contract
-        amount = clampLte(amount, token.allowance(address(alice), address(this)));
+        // amount = clampLte(amount, token.allowance(address(alice), address(this)));
 
         uint balanceBefore = token.balanceOf(address(alice));
 
@@ -65,5 +69,35 @@ contract ExternalTestingToken is PropertiesAsserts{
 
         assertEq(balanceAfter - balanceBefore, amount, "The amount transfered must be equal to the expected amount");
 
+    }
+
+    function testBurn(uint amount) public {
+        // Ensure amount is less or equal to alice's balanc
+        amount = clampLte(amount, token.balanceOf(address(alice)));
+
+        uint balanceBefore = token.balanceOf(address(alice));
+
+        alice.burn(amount);
+
+        uint balanceAfter = token.balanceOf(address(alice));
+
+        assertEq(balanceBefore - balanceAfter, amount, "The amount burned must be equal to the expected amount");
+    }
+
+    function testApprove(uint amount) public {
+        // Ensure amount is less or equal to alice's balanc
+        amount = clampLte(amount, token.balanceOf(address(alice)));
+
+        // reset the approval to 0
+        alice.approve(0);
+
+        // Approve the amount
+        alice.approve(amount);
+
+        assertEq(token.allowance(address(alice), address(this)), amount, "The amount approved must be equal to the expected amount");
+    }
+
+    function fuzz_balanceNotMoreThanTotalSupply() public view returns(bool) {
+        return token.balanceOf(address(alice)) <= token.totalSupply();
     }
 }

@@ -17,21 +17,21 @@ The goals of the contest is to write invariants for three targets. All the contr
 
 ### SignedWadMath
 - [`SignedWadMath`](./contracts/SignedWadMath.sol) is a signed 18 decimal fixed point (wad) arithmetic library.
-- [`SignedWadMathTest](./contracts/SignedWadMathTest.sol) is an example of test for `SignedWadMath` 
+- [`SignedWadMathTest`](./contracts/SignedWadMathTest.sol) is an example of test for `SignedWadMath` 
 
 ### FixedPointMathLib
 - [`FixedPointMathLib`](./contracts/FixedPointMathLib.sol) is an arithmetic library with operations for fixed-point numbers.
-- [`FixedPointMathLibTest](./contracts/FixedPointMathLibTest.sol) is an example of test for `SignedWadMath` 
+- [`FixedPointMathLibTest`](./contracts/FixedPointMathLibTest.sol) is an example of test for `SignedWadMath` 
 
 ### ERC20
 - [`ERC20`](./contracts/ERC20.sol) is an arithmetic library with operations for fixed-point numbers.
 - [`ERC20Burn`](./contracts/ERC20Burn.sol) extends `ERC20`  with a burn function
-- [`ERC20Test](./contracts/ERC20Test.sol) is an example of test for `ERC20Burn` 
-- [`ERC20TestAdvanced](./contracts/ERC20TestAdvanced.sol) is an example of an advanced test for `ERC20Burn` 
+- [`ERC20Test`](./contracts/ERC20Test.sol) is an example of test for `ERC20Burn` 
+- [`ERC20TestAdvanced`](./contracts/ERC20TestAdvanced.sol) is an example of an advanced test for `ERC20Burn` 
    - `ERC20TestAdvanced` uses the [external testing approach](https://secure-contracts.com/program-analysis/echidna/basic/common-testing-approaches.html#external-testing) and uses a proxy contract to simulate a user. This approach is more complex to use, but allows to test for more complex scenario
 
 ### Helper
-- [`helper](./contracts/helper.sol) comes from the [properties](https://github.com/crytic/properties) repo, and contains functions helper to ease the creation of invariants. 
+- [`helper`](./contracts/helper.sol) comes from the [properties](https://github.com/crytic/properties) repo, and contains functions helper to ease the creation of invariants. 
 
 ## How to start
 

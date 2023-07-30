@@ -1,4 +1,5 @@
-import "./SignedWadMath.sol";
+pragma solidity 0.8.19;
+import {SignedWadMath} from "./SignedWadMath.sol";
 import "./helper.sol";
 
 // Run with medusa fuzz --target contracts/SignedWadMathTest.sol --deployment-order SignedWadMathTest
@@ -12,7 +13,7 @@ contract SignedWadMathTest is PropertiesAsserts{
 
         x = clampLte(x, 10**18);
 
-        int256 y = toWadUnsafe(x);
+        int256 y = SignedWadMath.toWadUnsafe(x);
 
         // Ensure that x <= uint(y)
         assertLte(x, uint(y), "X should be less or equal to Y");

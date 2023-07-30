@@ -4,7 +4,7 @@
 // The following file contains ERC20/WETH/SafeTransferLib from solmate
 // permit-like functions were removed (EIP-2612)
 
-pragma solidity >=0.8.0;
+pragma solidity 0.8.19;
 
 /// @notice Modern and gas efficient ERC20 
 /// @author Solmate (https://github.com/transmissions11/solmate/blob/main/src/tokens/ERC20.sol)

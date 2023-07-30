@@ -67,6 +67,7 @@ We encourage you to try different approaches and invariants. Invariants based de
 ## Configuration
 [medusa.json](./medusa.json) was generated with `medusa init`. The following changes were applied:
 - `testAllContracts` was set to true
+- `corpusDirectory` was set to "corpus"
 
 ## Documentation
 - [Medusa configuration](https://github.com/crytic/medusa/wiki/Project-Configuration)

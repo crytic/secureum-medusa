@@ -30,7 +30,7 @@ The goals of the contest is to write invariants for three targets (`SignedWadMat
 - [`FixedPointMathLibTest`](./contracts/FixedPointMathLibTest.sol) is an example of test for `SignedWadMath` 
 
 ### ERC20Burn
-- [`ERC20`](./contracts/ERC20.sol) is an arithmetic library with operations for fixed-point numbers.
+- [`ERC20`](./contracts/ERC20.sol) is a standard ERC20 token.
 - [`ERC20Burn`](./contracts/ERC20Burn.sol) extends `ERC20`  with a burn function
 - [`ERC20Test`](./contracts/ERC20Test.sol) is an example of test for `ERC20Burn` 
 - [`ERC20TestAdvanced`](./contracts/ERC20TestAdvanced.sol) is an example of an advanced test for `ERC20Burn` 
@@ -58,7 +58,7 @@ Replace `NAME.sol` and `CONTRACT_NAME`.
 
 ## Expected Results and Evaluation
 
-User should be able to fully test the contracts. It is worth mentioning that the code is unmodified and there are no known issues. If you find some security or correctness issue in the code do NOT post it in this repository nor upstream, since these are public messages. Instead, contact us to confirm the issue and discuss how to proceed.
+User should be able to fully test the contracts. It is worth mentioning that the code is unmodified and there are no known issues. If you find some security or correctness issue in the code do NOT post it in this repository nor upstream, since these are public messages. Instead, [contact us](mailto:josselin@trailofits.com) to confirm the issue and discuss how to proceed.
 
 For Secureum, the resulting properties will be evaluated introducing an artificial bug in the code and running a short fuzzing campaign.
 
@@ -68,6 +68,7 @@ We encourage you to try different approaches and invariants. Invariants based de
 [medusa.json](./medusa.json) was generated with `medusa init`. The following changes were applied:
 - `testAllContracts` was set to true
 - `corpusDirectory` was set to "corpus"
+- `assertionTesting/enabled` was set to true
 
 ## Documentation
 - [Medusa configuration](https://github.com/crytic/medusa/wiki/Project-Configuration)

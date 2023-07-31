@@ -11,6 +11,15 @@ Medusa is a [new experimental fuzzer](https://github.com/crytic/medusa). Do not 
 
 To install medusa, follow [the installation instructions](https://github.com/crytic/medusa/#installation).
 
+### Solc
+
+Solc 0.8.19 is used for this workshop. We recommend [solc-select](https://github.com/crytic/solc-select) to easily switch between solc versions:
+```
+pip3 install solc-select
+solc-select install 0.8.19
+solc-select use 0.8.19
+```
+
 ## The contest
 
 The goals of the contest is to write invariants for three targets (`SignedWadMath`, `FixedPointMathLib`, `ERC20Burn`). All the contracts are inspired from [solmate](https://github.com/transmissions11/solmate).

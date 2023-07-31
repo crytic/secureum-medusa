@@ -33,17 +33,23 @@ The goals of the contest is to write invariants for three targets (`SignedWadMat
 ### SignedWadMath
 - [`SignedWadMath`](./contracts/SignedWadMath.sol) is a signed 18 decimal fixed point (wad) arithmetic library.
 - [`SignedWadMathTest`](./contracts/SignedWadMathTest.sol) is an example of test for `SignedWadMath` 
+  - `testtoWadUnsafe` is an example of invariant to help you
 
 ### FixedPointMathLib
 - [`FixedPointMathLib`](./contracts/FixedPointMathLib.sol) is an arithmetic library with operations for fixed-point numbers.
 - [`FixedPointMathLibTest`](./contracts/FixedPointMathLibTest.sol) is an example of test for `SignedWadMath` 
+  - `testmulDivDown` is an example of invariant to help you
 
 ### ERC20Burn
 - [`ERC20`](./contracts/ERC20.sol) is a standard ERC20 token.
 - [`ERC20Burn`](./contracts/ERC20Burn.sol) extends `ERC20`  with a burn function
 - [`ERC20Test`](./contracts/ERC20Test.sol) is an example of test for `ERC20Burn` 
+  - `fuzz_Supply` is an example of invariant to help you
 - [`ERC20TestAdvanced`](./contracts/ERC20TestAdvanced.sol) is an example of an advanced test for `ERC20Burn` 
    - `ERC20TestAdvanced` uses the [external testing approach](https://secure-contracts.com/program-analysis/echidna/basic/common-testing-approaches.html#external-testing) and uses a proxy contract to simulate a user. This approach is more complex to use, but allows to test for more complex scenario
+   - `testTransferFrom`  is an example of invariant to help you
+
+### ERC20Burn
 
 
 ## How to start

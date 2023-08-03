@@ -57,6 +57,24 @@ abstract contract PropertiesAsserts {
         }
     }
 
+    /// @notice bool version of assertEq
+    function assertEq(bool a, bool b, string memory reason) internal {
+        if (a != b) {
+            string memory aStr = PropertiesLibString.toString(a);
+            string memory bStr = PropertiesLibString.toString(b);
+            bytes memory assertMsg = abi.encodePacked(
+                "Invalid: ",
+                aStr,
+                "!=",
+                bStr,
+                ", reason: ",
+                reason
+            );
+            emit AssertEqFail(string(assertMsg));
+            assert(false);
+        }
+    }
+
     /// @notice asserts that a is not equal to b. Violations are logged using reason.
     function assertNeq(uint256 a, uint256 b, string memory reason) internal {
         if (a == b) {
@@ -89,6 +107,24 @@ abstract contract PropertiesAsserts {
                 reason
             );
             emit AssertNeqFail(string(assertMsg));
+            assert(false);
+        }
+    }
+
+    /// @notice bool version of assertNEq
+    function assertNeq(bool a, bool b, string memory reason) internal {
+        if (a == b) {
+            string memory aStr = PropertiesLibString.toString(a);
+            string memory bStr = PropertiesLibString.toString(b);
+            bytes memory assertMsg = abi.encodePacked(
+                "Invalid: ",
+                aStr,
+                "==",
+                bStr,
+                ", reason: ",
+                reason
+            );
+            emit AssertEqFail(string(assertMsg));
             assert(false);
         }
     }
@@ -516,6 +552,14 @@ library PropertiesLibString {
             s[2 * i + 1] = char(lo);
         }
         return string(s);
+    }
+
+    function toString(bool b) internal pure returns (string memory str) {
+        if (b) {
+            return "true";
+        }
+
+        return "false";
     }
 
     function char(bytes1 b) internal pure returns (bytes1 c) {

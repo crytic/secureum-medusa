@@ -1,6 +1,7 @@
 pragma solidity 0.8.19;
 import "./ERC20Burn.sol";
 import "./helper.sol";
+import "./IVM.sol";
 
 
 // Example using an external testing
@@ -35,6 +36,8 @@ contract ExternalTestingToken is PropertiesAsserts{
 
     User alice;
 
+    IVM vm = IVM(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
+
     constructor() {
         // Deploy the token
         // All the token belong to the contract
@@ -42,13 +45,14 @@ contract ExternalTestingToken is PropertiesAsserts{
 
         assert(token.balanceOf(address(this)) == 10**18);
 
-        alice = new User(token);
+        alice = new User();
 
         // Transfer all the token to alice
         token.transfer(address(alice), 10**18);
+        
         // Approve all the token from Alice to ExternalTestingToken
-        alice.approve(10**18);
-
+        vm.prank(address(alice));
+        token.approve(address(this), 10**18);
     }
 
     // The following test a transfer from

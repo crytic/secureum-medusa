@@ -89,3 +89,6 @@ We encourage you to try different approaches and invariants. Invariants based de
 - [Medusa configuration](https://github.com/crytic/medusa/wiki/Project-Configuration)
 - [Fuzzing workshop](https://www.youtube.com/watch?v=QofNQxW_K08&list=PLciHOL_J7Iwqdja9UH4ZzE8dP1IxtsBXI)
 - [Fuzzing training](https://secure-contracts.com/program-analysis/echidna/index.html)
+
+## Self-Evaluation
+See [Evaluation](./Evaluation.md)

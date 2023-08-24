@@ -79,6 +79,49 @@ For Secureum, the resulting properties will be evaluated introducing an artifici
 
 We encourage you to try different approaches and invariants. Invariants based development is a powerful tool for developer and auditors that require practices and experience to master it. 
 
+## Self-Evaluation
+
+To evaluate how many bugs were caught by your submission, you can run the `eval.sh` file:
+```bash
+sh eval.sh
+```
+
+**NOTE**: Please keep in mind that your `submission.sol` file must be in the `contracts/` directory and must look like this:
+```solidity
+pragma solidity 0.8.19;
+
+import "./SignedWadMathTest.sol";
+import "./FixedPointMathLibTest.sol";
+import "./ERC20Test.sol";
+import "./ERC20TestAdvanced.sol";
+```
+
+If your `submission.sol` does not look like this then the script will not work.
+
+**NOTE**: If you are a Windows user, unfortunately, the above script will not work for you. You may either use a Linux VM or Windows Subsystem for Linux (WSL).
+
+Each file (`FixedPointMathLib`, `SignedWadMath`, and `ERC20Burn`) has 10 bugs introduced to them. Thus, there are a total of 30 bugs. The bash script will individually test each bug to see whether your submission caught the bug. To see which bugs were introduced, you can check out the `bugs/` folder. The `bugs/` folder has three sub-directories where each sub-folder is related to one of the files. For example, the `bugs/erc/` folder holds the 10 bugs for the `ERC20Burn` contract.
+
+The `eval.sh` script output will notify you if your submission caught on or more bugs. Here is an example output:
+ ```
+ Switched global version to 0.8.19
+testing FixedPointMathLib bugs
+ - bad_mulDivUp_one.sol was caught
+ - bad_mulDivUp_two.sol was caught
+ - bad_rpow.sol was caught
+testing SignedWadMath bugs
+ - bad_decimals.sol was caught
+ - bad_wadExp.sol was caught
+testing ERC20 bugs
+ - bad_burn.sol was caught
+ - bad_total_supply.sol was caught
+```
+ Based on the output above, your submission caught 3/10 bugs in the `FixedPointMathLib` library, 2/10 bugs in the `SignedWadMath` library, and 2/10 bugs in the `ERC20` burn contract. Note that there is a chance that you caught the bug for the **wrong reason**. Even though `medusa` hit an assertion failure when trying to catch the bug, it does not mean that it caught the bug that we introduced. The script will simply look for the string "assertion failed" in `medusa`'s output and nothing else. To see whether you actually caught the bug, you must perform a manual review.
+
+ To perform a manual review on whether you caught a bug and do not have a false positive, you can individually review the output from `medusa` for each bug that was introduced. The output of `medusa` is in the `contracts/results/` folder. The `results/` folder will hold 30 files where each file is related to one of the introduced bugs. You can then validate whether the output + the invariant you specified was sufficient in finding the bug. Note that we performed a brief manual review of your submissions and reduced the false positive rate to the best of our abilities. 
+
+ If you have any questions, please reach out to the ToB team on Discord. 
+
 ## Configuration
 [medusa.json](./medusa.json) was generated with `medusa init`. The following changes were applied:
 - `testAllContracts` was set to true

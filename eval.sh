@@ -6,7 +6,6 @@ cd contracts/
 mkdir -p results
 
 for bug in $(ls ../bugs/fixed) ; do
-    # echo "Testing $bug with $user properties"
     cp ../bugs/fixed/$bug FixedPointMathLib.sol
     cp ../bugs/ERC20Burn.sol ERC20Burn.sol
     cp ../bugs/SignedWadMath.sol SignedWadMath.sol
@@ -25,7 +24,6 @@ done
 echo "testing SignedWadMath bugs"
 
 for bug in $(ls ../bugs/signed) ; do
-    #echo "Testing $bug with $user properties"	
     cp ../bugs/signed/$bug SignedWadMath.sol
     cp ../bugs/ERC20Burn.sol ERC20Burn.sol
     cp ../bugs/FixedPointMathLib.sol FixedPointMathLib.sol
@@ -39,13 +37,11 @@ for bug in $(ls ../bugs/signed) ; do
     if [[ $bug_count -ne 0 ]]; then
         echo " - $bug was caught"
     fi
-
 done
 
 echo "testing ERC20 bugs"
 
 for bug in $(ls ../bugs/erc) ; do
-    #echo "Testing $bug with $user properties"	
     cp ../bugs/erc/$bug ERC20Burn.sol
     cp ../bugs/SignedWadMath.sol SignedWadMath.sol
     cp ../bugs/FixedPointMathLib.sol FixedPointMathLib.sol
@@ -59,5 +55,4 @@ for bug in $(ls ../bugs/erc) ; do
     if [[ $bug_count -ne 0 ]]; then
         echo " - $bug was caught"
     fi
-
 done
